@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: pink;
+}
+
+.board {
+  width: calc(64px*8);
+  height: calc(64px*8);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chunk {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.dark {
+  background-color: cadetblue;
+}
+
+.white {
+  background-color: rgb(185, 185, 185);
+}
+
+.active {
+  background-color: chocolate;
+}
+
+.elipse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.attacked {
+  background-color: green;
+}
