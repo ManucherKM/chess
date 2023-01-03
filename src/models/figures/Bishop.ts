@@ -12,6 +12,15 @@ class Bishop extends Figure {
         this.name = FigureNames.Bishop;
     }
 
+    public canMove(target: Chunk): boolean {
+        if (!super.canMove(target)) {
+            return false
+        }
+        if (this.chunk.isEmptyDiagonal(target)) {
+            return true
+        }
+        return false
+    }
 }
 
 export default Bishop

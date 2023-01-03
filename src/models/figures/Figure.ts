@@ -17,6 +17,7 @@ class Figure {
     logo: typeof logo | null;
     chunk: Chunk;
     name: FigureNames;
+    isCheck: boolean = false;
     id: number;
 
     constructor(color: Colors, chunk: Chunk) {
@@ -29,6 +30,13 @@ class Figure {
     }
 
     canMove(target: Chunk) {
+        if (this.color === target.figure?.color) {
+            return false
+        }
+        if (target.figure?.name === FigureNames.King && target.figure.isCheck) {
+            console.log("Шах");
+            return false
+        }
         return true
     }
 

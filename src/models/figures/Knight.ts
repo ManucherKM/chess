@@ -11,7 +11,15 @@ class Knight extends Figure {
         this.logo = color === Colors.dark ? blackFigure : whiteFigure;
         this.name = FigureNames.Knight;
     }
+    public canMove(target: Chunk): boolean {
+        if (!super.canMove(target)) {
+            return false
+        }
+        const dx = Math.abs(this.chunk.x - target.x);
+        const dy = Math.abs(this.chunk.y - target.y);
 
+        return (dx === 1 && dy === 2) || (dx === 2 && dy === 1)
+    }
 }
 
 export default Knight

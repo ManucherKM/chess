@@ -11,7 +11,18 @@ class Rook extends Figure {
         this.logo = color === Colors.dark ? blackFigure : whiteFigure;
         this.name = FigureNames.Rook;
     }
-
+    public canMove(target: Chunk): boolean {
+        if (!super.canMove(target)) {
+            return false
+        }
+        if (this.chunk.isEmptyVertical(target)) {
+            return true
+        }
+        if (this.chunk.isEmptyHorizontal(target)) {
+            return true
+        }
+        return false
+    }
 }
 
 export default Rook

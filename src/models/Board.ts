@@ -1,6 +1,7 @@
 import Chunk from "./Chunk"
 import { Colors } from "./Colors";
 import Bishop from "./figures/Bishop";
+import Figure from "./figures/Figure";
 import King from "./figures/King";
 import Knight from "./figures/Knight";
 import Pawn from "./figures/Pawn";
@@ -9,6 +10,9 @@ import Rook from "./figures/Rook";
 
 class Board {
     chunk: Chunk[][] = [];
+
+    lostWhiteFigure: Figure[] = [];
+    lostDarkFigure: Figure[] = [];
 
     public initialChunk() {
         for (let i = 0; i < 8; i++) {
@@ -28,6 +32,14 @@ class Board {
         return this.chunk[y][x]
     }
 
+    public addLostFigure(figure: Figure) {
+        if (figure.color === Colors.dark) {
+            this.lostDarkFigure.push(figure);
+        } else {
+            this.lostWhiteFigure.push(figure);
+        }
+    }
+
     public highlightChunk(selectedChunk: Chunk | null) {
         for (let i = 0; i < this.chunk.length; i++) {
             const line = this.chunk[i];
@@ -39,8 +51,10 @@ class Board {
     }
 
     public getCopyBoard() {
-        const newBoard = new Board;
+        const newBoard = new Board();
         newBoard.chunk = this.chunk;
+        newBoard.lostDarkFigure = this.lostDarkFigure
+        newBoard.lostWhiteFigure = this.lostWhiteFigure
         return newBoard;
     }
 

@@ -16,7 +16,9 @@ const ChunkComponent: FC<IChunkComponent> = ({ chunk, selected, onClick }) => {
     return (
         <div
             onClick={clickHandler}
-            className={["chunk", chunk.color, selected ? "active" : "", chunk.isActive && chunk.figure ? "attacked" : ""].join(" ").trim()}
+            className={["chunk", chunk.color, selected ? "active" : "",
+                chunk.isActive && chunk.figure ? "attacked" : "",
+                chunk.figure?.isCheck ? "check" : ""].join(" ").trim()}
         >
             {chunk.isActive && !chunk.figure &&
                 <div className="elipse" />
