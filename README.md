@@ -8,8 +8,9 @@
 
 ## Web application
 
-[Chess]()
+[Chess](https://chess-umber.vercel.app)
 
 ## Preview
 
-[![Layout]()]()
+[![Layout](https://raw.githubusercontent.com/ManucherKM/chess/main/preview/home.png)](https://chess-umber.vercel.app)
+[![Layout](https://github.com/ManucherKM/chess/blob/main/preview/game.png?raw=true)](https://chess-umber.vercel.app)
