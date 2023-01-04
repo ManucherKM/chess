@@ -12,9 +12,7 @@ class Knight extends Figure {
         this.name = FigureNames.Knight;
     }
     public canMove(target: Chunk): boolean {
-        if (!super.canMove(target)) {
-            return false
-        }
+        if (!super.canMove(target)) return false
         const dx = Math.abs(this.chunk.x - target.x);
         const dy = Math.abs(this.chunk.y - target.y);
 

@@ -1,0 +1,11 @@
+.lostfigures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+
+    img {
+        width: 25px;
+        height: 25px;
+    }
+}

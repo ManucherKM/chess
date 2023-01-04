@@ -1,26 +1,25 @@
 import { FC } from "react"
-import Chunk from "../models/Chunk"
-
-interface IChunkComponent {
-    chunk: Chunk,
-    selected: boolean,
-    onClick: (chunk: Chunk) => void,
-}
+import { IChunkComponent } from "../types/types"
 
 const ChunkComponent: FC<IChunkComponent> = ({ chunk, selected, onClick }) => {
+    const styleSelected = selected ? "active" : "";
+    const styleAttacked = chunk.isActive && chunk.figure ? "attacked" : "";
+    const styleCheck = chunk.figure?.isCheck ? "check" : "";
+
+    const styles = [chunk.color, styleSelected, styleAttacked, styleCheck].join(" ").trim();
 
     function clickHandler() {
-        onClick(chunk)
+        onClick(chunk);
     }
 
+    const isElipse = chunk.isActive && !chunk.figure;
+    
     return (
         <div
             onClick={clickHandler}
-            className={["chunk", chunk.color, selected ? "active" : "",
-                chunk.isActive && chunk.figure ? "attacked" : "",
-                chunk.figure?.isCheck ? "check" : ""].join(" ").trim()}
+            className={`chunk ${styles}`}
         >
-            {chunk.isActive && !chunk.figure &&
+            {isElipse &&
                 <div className="elipse" />
             }
             {chunk.figure?.logo &&

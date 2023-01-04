@@ -30,9 +30,8 @@ class Figure {
     }
 
     canMove(target: Chunk) {
-        if (this.color === target.figure?.color) {
-            return false
-        }
+        if (this.color === target.figure?.color) return false
+
         if (target.figure?.name === FigureNames.King && target.figure.isCheck) {
             console.log("Шах");
             return false
@@ -40,9 +39,7 @@ class Figure {
         return true
     }
 
-    moveFigure(target: Chunk) {
-
-    }
+    moveFigure(target: Chunk) { }
 }
 
 export default Figure

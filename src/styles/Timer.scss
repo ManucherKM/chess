@@ -1,0 +1,64 @@
+$btn-color: green;
+
+.timer {
+    background: $white-chunk-color;
+    padding: 20px;
+    border-radius: 0.5rem;
+    width: 80%;
+
+    .wrapper__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btn_restart {
+            background: $btn-color;
+            padding: 5px 15px;
+            color: white;
+            border-radius: 0.5rem;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .wrapper_time {
+        margin: 20px 0;
+    }
+
+    .move__white {
+        color: white;
+    }
+
+    .move__dark {
+        color: black;
+    }
+
+    .timer__move {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .timer__title {
+        font-weight: 500;
+        color: $dark-chunk-color;
+        text-align: center;
+    }
+
+    .timer_time {
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .time_dark {
+        color: black;
+    }
+
+    .time_white {
+        color: white;
+    }
+}

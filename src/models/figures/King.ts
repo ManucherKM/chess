@@ -11,16 +11,12 @@ class King extends Figure {
         this.name = FigureNames.King;
     }
     public canMove(target: Chunk): boolean {
-        if (!super.canMove(target)) {
-            return false
-        }
+        if (!super.canMove(target)) return false
 
         const absX = Math.abs(target.x - this.chunk.x);
         const absY = Math.abs(target.y - this.chunk.y);
 
-        if (absX > 1 || absY > 1) {
-            return false
-        }
+        if (absX > 1 || absY > 1) return false
 
         return true
     }

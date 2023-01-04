@@ -1,26 +1,22 @@
 import { FC, useEffect, useState } from "react"
-import Board from "../models/Board"
+import { IBoardComponent } from "../types/types";
 import Chunk from "../models/Chunk";
-import Player from "../models/Player";
-import ChunkComponent from "./ChunkComponent"
-
-interface IBoardComponent {
-    board: Board,
-    setBoard: (board: Board) => void,
-    swapPlayer: () => void,
-    currentPlayer: Player | null,
-}
+import ChunkComponent from "./ChunkComponent";
 
 const BoardComponent: FC<IBoardComponent> = ({ board, setBoard, swapPlayer, currentPlayer }) => {
     const [selected, setSelected] = useState<Chunk | null>(null);
 
     function clickHandler(chunk: Chunk) {
-        if (selected && selected !== chunk && selected.figure?.canMove(chunk)) {
+        const isSelectAndMove = selected && selected !== chunk && selected.figure?.canMove(chunk);
+
+        if (isSelectAndMove) {
             selected.moveFigure(chunk);
             swapPlayer();
             setSelected(null);
         } else {
-            if (chunk.figure?.color === currentPlayer?.color) {
+            const isSameColors = chunk.figure?.color === currentPlayer?.color;
+
+            if (isSameColors) {
                 setSelected(chunk);
             }
         }
@@ -41,22 +37,17 @@ const BoardComponent: FC<IBoardComponent> = ({ board, setBoard, swapPlayer, curr
     }
 
     return (
-        <div>
-            <h2>
-                {currentPlayer?.color}
-            </h2>
-            <div className="board">
-                {board.chunk.map(line =>
-                    line.map(chunk =>
-                        <ChunkComponent
-                            key={chunk.id}
-                            chunk={chunk}
-                            selected={chunk.x === selected?.x && chunk.y === selected.y}
-                            onClick={clickHandler}
-                        />
-                    )
-                )}
-            </div>
+        <div className="board">
+            {board.chunk.map(line =>
+                line.map(chunk =>
+                    <ChunkComponent
+                        key={chunk.id}
+                        chunk={chunk}
+                        selected={chunk.x === selected?.x && chunk.y === selected.y}
+                        onClick={clickHandler}
+                    />
+                )
+            )}
         </div>
     )
 }

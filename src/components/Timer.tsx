@@ -1,26 +1,18 @@
 import { FC, useState, useRef, useEffect } from "react"
 import { Colors } from "../models/Colors";
-import Player from "../models/Player"
-
-interface ITimer {
-    player: Player | null,
-    restart: () => void,
-}
+import { ITimer } from "../types/types";
 
 const Timer: FC<ITimer> = ({ player, restart }) => {
-    const [whiteTimer, setWhiteTimer] = useState(500);
-    const [darkTimer, setDarkTimer] = useState(500);
+    const [whiteTimer, setWhiteTimer] = useState<number>(500);
+    const [darkTimer, setDarkTimer] = useState<number>(500);
     const timer = useRef<null | ReturnType<typeof setInterval>>(null);
-
 
     useEffect(() => {
         startTimer()
     }, [player]);
 
     function startTimer() {
-        if (timer.current) {
-            clearInterval(timer.current);
-        }
+        if (timer.current) clearInterval(timer.current);
 
         const callback = player?.color === Colors.white ? dicWhite : dicDark;
 
@@ -38,14 +30,37 @@ const Timer: FC<ITimer> = ({ player, restart }) => {
     function clickHandler() {
         setWhiteTimer(500);
         setDarkTimer(500);
-        restart()
+        restart();
     }
 
     return (
-        <div>
-            <h2>Белые: {whiteTimer}</h2>
-            <h2>Черные: {darkTimer}</h2>
-            <button onClick={clickHandler}>restart</button>
+        <div className="timer">
+            <p className="timer__move timer__title">
+                Ход
+                {player?.color === Colors.white
+                    ? <span className="move__white">Белых</span>
+                    : <span className="move__dark">Черных</span>
+                }
+            </p>
+            <div className="wrapper_time">
+                <p className="timer__title">Время</p>
+                <p className="timer_time">
+                    <span className="time_white">
+                        {whiteTimer}
+                    </span>
+                    <span className="time_dark">
+                        {darkTimer}
+                    </span>
+                </p>
+            </div>
+            <div className="wrapper__btn">
+                <button
+                    className="btn_restart"
+                    onClick={clickHandler}
+                >
+                    restart
+                </button>
+            </div>
         </div>
     )
 }

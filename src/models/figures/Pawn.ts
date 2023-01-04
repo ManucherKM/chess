@@ -14,15 +14,12 @@ class Pawn extends Figure {
         this.name = FigureNames.Pawn;
     }
     public canMove(target: Chunk): boolean {
-        if (!super.canMove(target)) {
-            return false
-        }
+        if (!super.canMove(target)) return false
 
         const direction = this.chunk.figure?.color === Colors.dark ? 1 : -1;
         const firstStepDirection = this.chunk.figure?.color === Colors.dark ? 2 : -2;
 
-
-        if ((target.y === this.chunk.y + direction || this.isFirstStep &&
+        if (((target.y === this.chunk.y + direction || this.isFirstStep) &&
             (target.y === this.chunk.y + firstStepDirection)) &&
             target.x === this.chunk.x &&
             this.chunk.board.getChunk(target.x, target.y).isEmpty()) {

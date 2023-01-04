@@ -31,24 +31,49 @@ function App() {
 
   return (
     <div className="App">
-      <BoardComponent
-        board={board}
-        setBoard={setBoard}
-        currentPlayer={currentPlayer}
-        swapPlayer={swapPlayer}
-      />
-      <LostFigures
-        figures={board.lostDarkFigure}
-      />
-      <LostFigures
-        figures={board.lostWhiteFigure}
-      />
+      <div className="wrapper_timer">
+        <Timer
+          player={currentPlayer}
+          restart={restart}
+        />
+      </div>
+      <div className="wrapper_board">
+        <BoardComponent
+          board={board}
+          setBoard={setBoard}
+          currentPlayer={currentPlayer}
+          swapPlayer={swapPlayer}
+        />
+      </div>
+      <div className="wrapper_lostfigures">
+        <div className="lostfigures__container">
+          <div>
 
-      <Timer
-        player={currentPlayer}
-        restart={restart}
-      />
-    </div>
+            {board.lostDarkFigure.length !== 0 &&
+              <div>
+                <p>Черные</p>
+                < LostFigures
+                  figures={board.lostDarkFigure}
+                />
+              </div>
+            }
+            {board.lostWhiteFigure.length !== 0 &&
+              <div>
+                <p>Белые</p>
+                <LostFigures
+                  figures={board.lostWhiteFigure}
+                />
+              </div>
+            }
+          </div>
+          {board.lostDarkFigure.length === 0 && board.lostDarkFigure.length === 0 &&
+            <div className="wrapper__lost_figure">
+              <p className="lost_figure_text">Съеденые фигуры</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div >
   );
 }
 

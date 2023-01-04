@@ -27,17 +27,12 @@ class Chunk {
     }
 
     public isEnemy(target: Chunk): boolean {
-        if (target.figure) {
-            return this.figure?.color !== target.figure.color;
-        }
-
+        if (target.figure) return this.figure?.color !== target.figure.color;
         return false
     }
 
     public isEmptyVertical(target: Chunk): boolean {
-        if (this.x !== target.x) {
-            return false
-        }
+        if (this.x !== target.x) return false
 
         const min = Math.min(this.y, target.y);
         const max = Math.max(this.y, target.y);
@@ -52,9 +47,7 @@ class Chunk {
     }
 
     public isEmptyHorizontal(target: Chunk): boolean {
-        if (this.y !== target.y) {
-            return false
-        }
+        if (this.y !== target.y) return false
 
         const min = Math.min(this.x, target.x);
         const max = Math.max(this.x, target.x);
@@ -72,9 +65,7 @@ class Chunk {
         const absX = Math.abs(target.x - this.x);
         const absY = Math.abs(target.y - this.y);
 
-        if (absX !== absY) {
-            return false
-        }
+        if (absX !== absY) return false
 
         const dx = this.x < target.x ? 1 : -1;
         const dy = this.y < target.y ? 1 : -1;

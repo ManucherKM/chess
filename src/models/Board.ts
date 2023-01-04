@@ -10,7 +10,6 @@ import Rook from "./figures/Rook";
 
 class Board {
     chunk: Chunk[][] = [];
-
     lostWhiteFigure: Figure[] = [];
     lostDarkFigure: Figure[] = [];
 
@@ -33,11 +32,8 @@ class Board {
     }
 
     public addLostFigure(figure: Figure) {
-        if (figure.color === Colors.dark) {
-            this.lostDarkFigure.push(figure);
-        } else {
-            this.lostWhiteFigure.push(figure);
-        }
+        if (figure.color === Colors.dark) this.lostDarkFigure.push(figure);
+        else this.lostWhiteFigure.push(figure);
     }
 
     public highlightChunk(selectedChunk: Chunk | null) {

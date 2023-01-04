@@ -12,18 +12,10 @@ class Queen extends Figure {
         this.name = FigureNames.Queen;
     }
     public canMove(target: Chunk): boolean {
-        if (!super.canMove(target)) {
-            return false
-        }
-        if (this.chunk.isEmptyVertical(target)) {
-            return true
-        }
-        if (this.chunk.isEmptyHorizontal(target)) {
-            return true
-        }
-        if (this.chunk.isEmptyDiagonal(target)) {
-            return true
-        }
+        if (!super.canMove(target)) return false
+        if (this.chunk.isEmptyVertical(target)) return true
+        if (this.chunk.isEmptyHorizontal(target)) return true
+        if (this.chunk.isEmptyDiagonal(target)) return true
         return false
     }
 }

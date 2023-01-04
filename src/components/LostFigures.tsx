@@ -1,19 +1,11 @@
 import { FC } from "react"
-import Figure from "../models/figures/Figure"
-
-interface ILostFigures {
-    figures: Figure[]
-}
+import { ILostFigures } from "../types/types"
 
 const LostFigures: FC<ILostFigures> = ({ figures }) => {
-    
     return (
-        <div>
+        <div className="lostfigures">
             {figures.map(figure =>
-                <div key={figure.id}>
-                    <h2>{figure.name}</h2>
-                    <img src={figure.logo} alt={figure.name} />
-                </div>
+                <img key={figure.id} src={figure.logo} alt={figure.name} />
             )}
         </div>
     )

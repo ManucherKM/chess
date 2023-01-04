@@ -1,0 +1,54 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+    background: teal;
+    display: flex;
+
+    .wrapper_timer {
+        height: 100%;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper_board {
+        height: 100%;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper_lostfigures {
+        height: 100%;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .lostfigures__container {
+            background: $white-chunk-color;
+            padding: 20px;
+            border-radius: 0.5rem;
+            width: 80%;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .wrapper__lost_figure {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .lost_figure_text {
+            font-weight: 500;
+            text-align: center;
+        }
+    }
+}

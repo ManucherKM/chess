@@ -1,58 +1,41 @@
+@import "styles/reset_default.scss";
+@import "styles/var.scss";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.App {
-  width: 100vw;
-  height: 100vh;
-  background: pink;
-}
-
-.board {
-  width: calc(64px*8);
-  height: calc(64px*8);
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.chunk {
-  width: 64px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    width: 45px;
-    height: 45px;
-  }
-}
-
 .dark {
-  background-color: cadetblue;
+  background-color: $dark-chunk-color;
 }
 
 .white {
-  background-color: rgb(185, 185, 185);
+  background-color: $white-chunk-color;
 }
 
 .active {
-  background-color: chocolate;
+  background-color: $active-color;
 }
 
 .elipse {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: green;
+  background-color: $elipse-color;
 }
 
 .attacked {
-  background-color: green;
+  background-color: $attacked-color;
 }
 
 .check {
-  background-color: blueviolet;
+  background-color: $check-color;
 }
+
+@import "styles/App.scss";
+@import "styles/Board.scss";
+@import "styles/Chunk.scss";
+@import "styles/Timer.scss";
+@import "styles/Lostfigures.scss";
